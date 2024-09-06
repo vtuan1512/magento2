@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">tigrenblog_new_form.tigrenblog_form_data_source</item>
+            <item name="deps" xsi:type="string">tigrenblog_new_form.tigrenblog_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Add / Edit Post</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">tigrenblog_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="save" xsi:type="string">Tigren\Blog\Block\Adminhtml\Edit\Button\Save</item>
+            <item name="back" xsi:type="string">Tigren\Blog\Block\Adminhtml\Edit\Button\Back</item>
+            <item name="delete" xsi:type="string">Tigren\Blog\Block\Adminhtml\Edit\Button\Delete</item>
+        </item>
+    </argument>
+    <dataSource name="tigrenblog_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Tigren\Blog\Model\DataProvider</argument>
+            <argument name="name" xsi:type="string">tigrenblog_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">post_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="tigrenblog/post/savepost"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="tigrenblog_new_form">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">Add / Edit Post</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+         <field name="post_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tigrenblog_form</item>
+                    <item name="dataScope" xsi:type="string">post_id</item>
+                </item>
+            </argument>
+             <settings>
+                      <visible>false</visible>
+             </settings>
+        </field>
+        <field name="title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Title</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tigrenblog_form</item>
+                    <item name="dataScope" xsi:type="string">title</item>
+                </item>
+            </argument>
+        </field>
+        <field name="cate_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Tigren\Blog\Model\Config\Source\Category</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Category</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/select</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="dataScope" xsi:type="string">cate_id</item>
+                </item>
+            </argument>
+        </field>
+
+        <!--        <field name="list_image">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="dataType" xsi:type="string">string</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">List Image</item>-->
+<!--                    <item name="formElement" xsi:type="string">imageUploader</item>-->
+<!--                    <item name="source" xsi:type="string">tigrenblog_form</item>-->
+<!--                    <item name="dataScope" xsi:type="string">list_image</item>-->
+<!--                    <item name="uploaderConfig" xsi:type="array">-->
+<!--                        <item name="url" xsi:type="url" path="tigrenblog/post/upload"/>-->
+<!--                    </item>-->
+<!--                    <item name="validation" xsi:type="array">-->
+<!--                        <item name="required-entry" xsi:type="boolean">false</item>-->
+<!--                    </item>-->
+<!--                    <item name="allowedExtensions" xsi:type="array">-->
+<!--                        <item name="0" xsi:type="string">jpg</item>-->
+<!--                        <item name="1" xsi:type="string">jpeg</item>-->
+<!--                        <item name="2" xsi:type="string">gif</item>-->
+<!--                        <item name="3" xsi:type="string">png</item>-->
+<!--                    </item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </field>-->
+
+        <field name="full_content">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Full Content</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tigrenblog_form</item>
+                    <item name="dataScope" xsi:type="string">full_content</item>
+                </item>
+            </argument>
+        </field>
+        <field name="short_content">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Short Content</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tigrenblog_form</item>
+                    <item name="dataScope" xsi:type="string">short_content</item>
+                </item>
+            </argument>
+        </field>
+        <field name="author">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Author</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tigrenblog_form</item>
+                    <item name="dataScope" xsi:type="string">author</item>
+                </item>
+            </argument>
+        </field>
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tigrenblog_form</item>
+                    <item name="dataScope" xsi:type="string">status</item>
+                </item>
+            </argument>
+        </field>
+
+    </fieldset>
+    <fieldset name="content">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Content</label>
+        </settings>
+
+        <field name="post_image" formElement="imageUploader">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">post</item>
+                </item>
+            </argument>
+            <settings>
+                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                <label translate="true">Post Image</label>
+                <visible>true</visible>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <uploaderConfig>
+                            <param xsi:type="url" name="url" path="*/*/imageTempUpload" />
+                        </uploaderConfig>
+                        <allowedExtensions>jpg jpeg png</allowedExtensions>
+                        <maxFileSize>4194309</maxFileSize>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+
+    </fieldset>
+</form>

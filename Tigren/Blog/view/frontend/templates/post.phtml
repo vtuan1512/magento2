@@ -1,0 +1,31 @@
+<?php
+
+use Tigren\Blog\Model\Post;
+use Tigren\Blog\ViewModel\PostViewModel;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+
+/** @var Post $post */
+/** @var PostViewModel $postViewModel */
+/** @var Template $block */
+/** @var Escaper $escaper */
+
+$postViewModel = $block->getData('post_view_model');
+$post = $block->getData('post');
+?>
+
+<a href="<?= $postViewModel->getPostUrl($post); ?>">
+    <h2><?= $escaper->escapeHtml($post->getData('title')); ?></h2>
+</a>
+<?php if ($post->hasData('post_image')): ?>
+    <img src="<?= $escaper->escapeUrl($postViewModel->getPostImage($post)); ?>"
+         alt="<?= $escaper->escapeHtmlAttr($post->getData('title')); ?>"
+         loading="lazy" />
+<?php endif; ?>
+
+<div>
+    <span class="author"><?= $escaper->escapeHtml($post->getData('author')); ?></span>
+    <span class="published-date"><?= $escaper->escapeHtml($block->formatDate($post->getData('published_at'))); ?></span>
+</div>
+<br>
+<p><?= $post->getData('content'); ?></p>

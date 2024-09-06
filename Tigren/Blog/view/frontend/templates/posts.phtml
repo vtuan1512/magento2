@@ -1,0 +1,25 @@
+<?php
+
+/** @var $block Template */
+/** @var $postsVideModel Posts */
+
+use TIgren\Blog\ViewModel\Posts;
+use Magento\Framework\View\Element\Template;
+
+/** @var Posts $postsViewModel */
+$postsViewModel = $block->getData('posts_view_model');
+$collection = $postsViewModel->getPosts(3);
+$pagerBlock = $this->getChildBlock('blog_pager');
+
+$postBlock = $block->getChildBlock('post');
+?>
+<?php if (!$collection->count()): ?>
+    <p>There are no posts in this blog.</p>
+<?php else: ?>
+    <?php foreach ($collection as $post): ?>
+        <?= $postsViewModel->getPostHtml($postBlock, $post); ?>
+    <?php endforeach; ?>
+    <?php if ($pagerBlock): ?>
+        <?= $postsViewModel->getPager($collection, $pagerBlock); ?>
+    <?php endif; ?>
+<?php endif; ?>
