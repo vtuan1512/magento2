@@ -1,0 +1,52 @@
+<?php
+
+use Tigren\Testimonial\Model\Post;
+use Tigren\Testimonial\ViewModel\PostViewModel;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+
+/** @var Post $post */
+/** @var PostViewModel $postViewModel */
+/** @var Template $block */
+/** @var Escaper $escaper */
+
+$postViewModel = $block->getData('post_view_model');
+$post = $block->getData('post');
+?>
+
+<div class="post-container card mb-4">
+    <div class="card-body">
+        <a href="<?= $postViewModel->getPostUrl($post); ?>" class="text-decoration-none">
+            <h2 class="post-title text-primary"><?= $escaper->escapeHtml($post->getData('name')); ?></h2>
+        </a>
+
+        <?php if ($post->hasData('profile_image')): ?>
+            <div class="text-center my-3">
+                <img src="<?= $escaper->escapeUrl($postViewModel->getPostImage($post)); ?>"
+                     alt="<?= $escaper->escapeHtmlAttr($post->getData('name')); ?>"
+                     class="d-block mx-auto rounded"
+                     style="width: 200px; height: 200px; object-fit: cover;"
+                     loading="lazy" />
+            </div>
+        <?php endif; ?>
+
+        <div class="post-details">
+            <p class="message">
+                <strong>Message:</strong> <?= $escaper->escapeHtml($post->getData('message')); ?>
+            </p>
+            <p class="company">
+                <strong>Company:</strong> <?= $escaper->escapeHtml($post->getData('company')); ?>
+            </p>
+            <p class="rating">
+                <strong>Rating:</strong> <?= $escaper->escapeHtml($post->getData('rating')); ?> / 5
+            </p>
+            <p class="created_at text-muted">
+                <strong>Created At:</strong> <?= $escaper->escapeHtml($block->formatDate($post->getData('created_at'))); ?>
+            </p>
+        </div>
+
+        <div class="post-content mt-3">
+            <p><?= nl2br($escaper->escapeHtml($post->getData('content'))); ?></p>
+        </div>
+    </div>
+</div>

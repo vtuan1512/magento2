@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tigren_Faq::tigrenfaq" title="Tigren FAQ" module="Tigren_Faq" sortOrder="51" resource="Tigren_Faq::tigrenfaq"/>
+        <add id="Tigren_Faq::post" title="Tigren FAQ" module="Tigren_Faq" sortOrder="10" action="tigrenfaq/post" resource="Tigren_Faq::post" parent="Tigren_Faq::tigrenfaq"/>
+    </menu>
+</config>

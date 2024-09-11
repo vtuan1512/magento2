@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="content">
+            <block template="Tigren_Testimonial::post/view.phtml" as="post">
+
+                    <arguments>
+                        <argument name="post_view_model" xsi:type="object">Tigren\Testimonial\ViewModel\Post\PostView</argument>
+                    </arguments>
+
+            </block>
+        </referenceBlock>
+    </body>
+</page>

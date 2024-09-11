@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Tigren_Blog::tigrenblog" title="Tigren Blog" module="Tigren_Blog" sortOrder="51" resource="Tigren_Blog::tigrenblog"/>
+        <add id="Tigren_Blog::tigrenblog" title="Tigren" module="Tigren_Blog" sortOrder="51" resource="Tigren_Blog::tigrenblog"/>
         <add id="Tigren_Blog::post" title="Manage Posts" module="Tigren_Blog" sortOrder="10" action="tigrenblog/post" resource="Tigren_Blog::post" parent="Tigren_Blog::tigrenblog"/>
         <add id="Tigren_Blog::category" title="Manage Category" module="Tigren_Blog" sortOrder="10" action="tigrenblog/category" resource="Tigren_Blog::category" parent="Tigren_Blog::tigrenblog"/>
     </menu>

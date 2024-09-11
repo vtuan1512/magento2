@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="catalog.topnav">
+            <block class="Tigren\Blog\Block\BlogLink"
+                   name="BlogLink">
+                <arguments>
+                    <argument name="label" xsi:type="string">
+                        Blog
+                    </argument>
+                    <argument name="path" xsi:type="string">
+                        http://magento2.localhost.com/blog
+                    </argument>
+                </arguments>
+            </block>
+            <block class="Tigren\Blog\Block\BlogLink"
+                   name="BlogLink2">
+                <arguments>
+                    <argument name="label" xsi:type="string">
+                        Testimonial
+                    </argument>
+                    <argument name="path" xsi:type="string">
+                        http://magento2.localhost.com/testimonial
+                    </argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
