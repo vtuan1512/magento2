@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tigren_CustomerGroupCatalog::tigrencustomergroupcatalog" title="Tigren CustomerGroupCatalog" module="Tigren_CustomerGroupCatalog" sortOrder="51" resource="Tigren_CustomerGroupCatalog::tigrencustomergroupcatalog"/>
+        <add id="Tigren_CustomerGroupCatalog::post" title="Manage Rule" module="Tigren_CustomerGroupCatalog" sortOrder="10" action="tigrencustomergroupcatalog/post" resource="Tigren_CustomerGroupCatalog::post" parent="Tigren_CustomerGroupCatalog::tigrencustomergroupcatalog"/>
+    </menu>
+</config>

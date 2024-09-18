@@ -1,0 +1,19 @@
+<?php
+$blockGrid = $block->getBlockGrid();
+$gridJsObjectName = $blockGrid->getJsObjectName();
+?>
+<?= $block->getGridHtml() ?>
+<input type="hidden" name="rh_customers" data-form-part="custom_form" id="rh_customers" value=""  />
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Tigren_Testimonial/js/assign-products": {
+                "selectedCustomers":  <?= /* @escapeNotVerified */ $block->getProductsJson() ?>,
+                "gridJsObjectName": <?= /* @escapeNotVerified */ '"' . $gridJsObjectName . '"' ?: '{}' ?>
+    }
+}
+}
+</script>
+<script>
+    require('mage/apply/main').apply();
+</script>

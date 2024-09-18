@@ -1,0 +1,6 @@
+<?php $_product = $block->getProduct(); ?>
+<?php if ($_product->isSaleable()): ?>
+    <div class="box-tocart">
+        <p>Please <a href="<?php echo $block->getUrl('customer/account/login') ?>" title="<?php echo __('Login') ?>"><?php echo __('Login') ?></a> or <a href="<?php echo $block->getUrl('customer/account/create') ?>" title="<?php echo "Register" ?>"><?php echo "Register" ?></a> to buy this product!</p>
+    </div>
+<?php endif; ?>

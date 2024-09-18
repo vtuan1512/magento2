@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_load_before">
+        <observer name="add_layout_handles" instance="Tigren\CustomerGroupCatalog\Observer\Logouthandles" />
+    </event>
+    <event name="checkout_cart_product_add_after">
+        <observer name="customPriceInCart" instance="Tigren\CustomerGroupCatalog\Observer\CustomPriceInCart" />
+    </event>
+</config>

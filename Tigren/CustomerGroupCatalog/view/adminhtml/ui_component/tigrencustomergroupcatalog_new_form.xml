@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">tigrencustomergroupcatalog_new_form.tigrencustomergroupcatalog_form_data_source</item>
+            <item name="deps" xsi:type="string">tigrencustomergroupcatalog_new_form.tigrencustomergroupcatalog_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Add / Edit Rule</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">tigrencustomergroupcatalog_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="save" xsi:type="string">Tigren\CustomerGroupCatalog\Block\Adminhtml\Edit\Button\Save</item>
+            <item name="delete" xsi:type="string">Tigren\CustomerGroupCatalog\Block\Adminhtml\Edit\Button\Delete</item>
+        </item>
+    </argument>
+    <dataSource name="tigrencustomergroupcatalog_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Tigren\CustomerGroupCatalog\Model\DataProvider</argument>
+            <argument name="name" xsi:type="string">tigrencustomergroupcatalog_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">rule_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="tigrencustomergroupcatalog/post/savepost"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="tigrencustomergroupcatalog_new_form">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">Add / Edit Rule</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+         <field name="rule_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tigrencustomergroupcatalog_form</item>
+                    <item name="dataScope" xsi:type="string">rule_id</item>
+                </item>
+            </argument>
+             <settings>
+                      <visible>false</visible>
+             </settings>
+        </field>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tigrencustomergroupcatalog_form</item>
+                    <item name="dataScope" xsi:type="string">name</item>
+                </item>
+            </argument>
+        </field>
+<!--        <field name="customer_group">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="dataType" xsi:type="string">text</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">Customer Group</item>-->
+<!--                    <item name="formElement" xsi:type="string">input</item>-->
+<!--                    <item name="source" xsi:type="string">tigrencustomergroupcatalog_form</item>-->
+<!--                    <item name="dataScope" xsi:type="string">customer_group</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </field>-->
+        <field name="customer_group">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Tigren\CustomerGroupCatalog\Model\Config\Source\CustomeGroup</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Customer Group</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/select</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="dataScope" xsi:type="string">customer_group</item>
+                </item>
+            </argument>
+        </field>
+        <field name="store">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Store</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tigrencustomergroupcatalog_form</item>
+                    <item name="dataScope" xsi:type="string">store</item>
+                </item>
+            </argument>
+        </field>
+<!--        <field name="products">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="dataType" xsi:type="string">text</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">Products</item>-->
+<!--                    <item name="formElement" xsi:type="string">input</item>-->
+<!--                    <item name="source" xsi:type="string">tigrencustomergroupcatalog_form</item>-->
+<!--                    <item name="dataScope" xsi:type="string">products</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </field>-->
+        <field name="products">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Tigren\CustomerGroupCatalog\Model\Config\Source\Product</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true"> Products</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/select</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="dataScope" xsi:type="string">products</item>
+                </item>
+            </argument>
+        </field>
+        <field name="discount_amount">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Discount Amount</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tigrencustomergroupcatalog_form</item>
+                    <item name="dataScope" xsi:type="string">discount_amount</item>
+                </item>
+            </argument>
+        </field>
+        <field name="start_time">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Start Time</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">tigrencustomergroupcatalog_form</item>
+                    <item name="dataScope" xsi:type="string">start_time</item>
+                    <item name="options" xsi:type="array">
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                        <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
+                        <item name="timeFormat" xsi:type="string">HH:mm:ss</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="end_time">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">End Time</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">tigrencustomergroupcatalog_form</item>
+                    <item name="dataScope" xsi:type="string">end_time</item>
+                    <item name="options" xsi:type="array">
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                        <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
+                        <item name="timeFormat" xsi:type="string">HH:mm:ss</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+<!--        <field name="end_time">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="dataType" xsi:type="string">text</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">End Time</item>-->
+<!--                    <item name="formElement" xsi:type="string">input</item>-->
+<!--                    <item name="source" xsi:type="string">tigrencustomergroupcatalog_form</item>-->
+<!--                    <item name="dataScope" xsi:type="string">end_time</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </field>-->
+        <field name="priority">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Priority</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tigrencustomergroupcatalog_form</item>
+                    <item name="dataScope" xsi:type="string">priority</item>
+                </item>
+            </argument>
+        </field>
+        <field name="active">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Active</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tigrencustomergroupcatalog_form</item>
+                    <item name="dataScope" xsi:type="string">active</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="assign_product_grid">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Products Fieldset</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">30</item>
+            </item>
+        </argument>
+        <container name="assign_products_container" >
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">170</item>
+                </item>
+            </argument>
+            <htmlContent name="html_content">
+                <argument name="block" xsi:type="object">Tigren\CustomerGroupCatalog\Block\Adminhtml\AssignProducts</argument>
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>

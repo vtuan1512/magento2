@@ -1,0 +1,19 @@
+<?php
+$blockGrid = $block->getBlockGrid();
+$gridJsObjectName = $blockGrid->getJsObjectName();
+?>
+<?= $block->getGridHtml() ?>
+<input type="hidden" name="tigren_products" data-form-part="custom_form" id="tigren_products" value=""  />
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Tigren_CustomerGroupCatalog/js/assign-products": {
+                "selectedProducts":  <?= /* @escapeNotVerified */ $block->getProductsJson() ?>,
+                "gridJsObjectName": <?= /* @escapeNotVerified */ '"' . $gridJsObjectName . '"' ?: '{}' ?>
+    }
+}
+}
+</script>
+<script>
+    require('mage/apply/main').apply();
+</script>

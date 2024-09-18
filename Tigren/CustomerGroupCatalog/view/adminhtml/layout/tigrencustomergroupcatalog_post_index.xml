@@ -3,8 +3,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="testimonial_new_form"/>
+            <uiComponent name="tigrencustomergroupcatalog_post_listing"/>
         </referenceContainer>
     </body>
-
 </page>
