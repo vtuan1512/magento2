@@ -1,0 +1,17 @@
+<!--
+  ~ @author    Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license   Open Software License ("OSL") v. 3.0
+  ~
+  -->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Add New Testimonial</title>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="testimonial_add_form" template="Tigren_Testimonial::add_form.phtml" />
+        </referenceContainer>
+    </body>
+</page>

@@ -25,6 +25,17 @@
                     </argument>
                 </arguments>
             </block>
+            <block class="Tigren\Blog\Block\BlogLink"
+                   name="BlogLink3">
+                <arguments>
+                    <argument name="label" xsi:type="string">
+                        Rule
+                    </argument>
+                    <argument name="path" xsi:type="string">
+                        http://magento2.localhost.com/rule
+                    </argument>
+                </arguments>
+            </block>
         </referenceBlock>
     </body>
 </page>

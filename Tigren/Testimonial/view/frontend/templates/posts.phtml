@@ -1,24 +1,40 @@
 <?php
-
+/** @var Escaper $escaper */
 /** @var $block Template */
-/** @var $postsVideModel Posts */
-
-use TIgren\Testimonial\ViewModel\Posts;
+/** @var $postsViewModel Posts */
 use Magento\Framework\View\Element\Template;
+use Tigren\Testimonial\ViewModel\Posts;
+use Magento\Framework\Escaper;
 
-/** @var Posts $postsViewModel */
 $postsViewModel = $block->getData('posts_view_model');
 $collection = $postsViewModel->getPosts(3);
-$pagerBlock = $this->getChildBlock('blog_pager');
-
-$postBlock = $block->getChildBlock('post');
+$pagerBlock = $block->getChildBlock('blog_pager');
 ?>
+<button><a href="<?= $block->getUrl('testimonial/index/create') ?>" class="btn-add-testimonial">Add new testimonial</a></button>
+
+<br>
 <?php if (!$collection->count()): ?>
-    <p>There are no posts in this Testimonial.</p>
+    <p>There are no testimonials.</p>
 <?php else: ?>
     <?php foreach ($collection as $post): ?>
-        <?= $postsViewModel->getPostHtml($postBlock, $post); ?>
+        <div class="testimonial-item">
+            <div class="testimonial-header">
+                <img class="profile-img" src="<?= $escaper->escapeUrl($postsViewModel->getPostImage($post)); ?>"
+                     alt="<?= $escaper->escapeHtmlAttr($post->getData('name')); ?>"
+                     loading="lazy" />
+                <div class="testimonial-info">
+                    <h3 class="testimonial-name"><?= $escaper->escapeHtml($post->getData('name')); ?></h3>
+                    <p class="testimonial-time">Posted on <?= $escaper->escapeHtml($post->getData('created_at')); ?></p>
+                </div>
+            </div>
+            <div class="testimonial-body">
+                <p class="testimonial-message"><?= $escaper->escapeHtml($post->getData('message')); ?></p>
+                <p class="testimonial-rating"><strong>Rating:</strong> <?= $post->getData('rating'); ?> / 5</p>
+            </div>
+        </div>
+        <hr>
     <?php endforeach; ?>
+
     <?php if ($pagerBlock): ?>
         <?= $postsViewModel->getPager($collection, $pagerBlock); ?>
     <?php endif; ?>

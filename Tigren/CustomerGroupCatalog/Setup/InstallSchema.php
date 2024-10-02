@@ -6,7 +6,6 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
 
     public function install(\Magento\Framework\Setup\SchemaSetupInterface $setup, \Magento\Framework\Setup\ModuleContextInterface $context)
     {
-        /** tigren_rule is the table name **/
         $installer = $setup;
         $installer->startSetup();
         if (!$installer->tableExists('tigren_rule')) {
@@ -168,6 +167,77 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
                     \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
                 )
                 ->setComment('Tigren Product Rule Table');
+
+            $installer->getConnection()->createTable($table);
+        }
+        if (!$installer->tableExists('tigren_history')) {
+            $table = $installer->getConnection()->newTable(
+                $installer->getTable('tigren_history')
+            )
+                ->addColumn(
+                    'value_id',
+                    \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+                    null,
+                    ['identity' => true, 'nullable' => false, 'primary' => true, 'unsigned' => true],
+                    'Value ID'
+                )
+                ->addColumn(
+                    'entity_id',
+                    Table::TYPE_INTEGER,
+                    null,
+                    ['nullable' => false,'unsigned' => true],
+                    'Entity ID'
+                )
+                ->addColumn(
+                    'order_id',
+                    Table::TYPE_INTEGER,
+                    null,
+                    ['nullable' => false, 'unsigned' => true],
+                    'Order ID'
+                )
+                ->addColumn(
+                    'customer_id',
+                    Table::TYPE_INTEGER,
+                    null,
+                    ['nullable' => false, 'unsigned' => true],
+                    'Customer ID'
+                )
+                ->addColumn(
+                    'rule_id',
+                    Table::TYPE_INTEGER,
+                    null,
+                    ['nullable' => false, 'unsigned' => true],
+                    'Rule ID'
+                )
+//                ->addForeignKey(
+//                    $installer->getFkName('tigren_history', 'entity_id', 'catalog_product_entity', 'entity_id'),
+//                    'entity_id',
+//                    $installer->getTable('catalog_product_entity'),
+//                    'entity_id',
+//                    Table::ACTION_CASCADE
+//                )
+//                ->addForeignKey(
+//                    $installer->getFkName('tigren_history', 'order_id', 'sales_order', 'entity_id'),
+//                    'order_id',
+//                    $installer->getTable('sales_order'),
+//                    'entity_id',
+//                    Table::ACTION_CASCADE
+//                )
+//                ->addForeignKey(
+//                    $installer->getFkName('tigren_history', 'customer_id', 'customer_entity', 'entity_id'),
+//                    'customer_id',
+//                    $installer->getTable('customer_entity'),
+//                    'entity_id',
+//                    Table::ACTION_CASCADE
+//                )
+//                ->addForeignKey(
+//                    $installer->getFkName('tigren_history', 'rule_id', 'tigren_rule', 'rule_id'),
+//                    'rule_id',
+//                    $installer->getTable('tigren_rule'),
+//                    'rule_id',
+//                    Table::ACTION_CASCADE
+//                )
+                ->setComment('Customer Group Catalog History Table');
 
             $installer->getConnection()->createTable($table);
         }

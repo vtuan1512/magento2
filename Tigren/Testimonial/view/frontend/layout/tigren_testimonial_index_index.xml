@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Tigren_Testimonial::css/testimonial.css"/>
+    </head>
     <body>
         <referenceBlock name="page.main.title">
             <action method="setPageTitle">
@@ -12,11 +15,6 @@
                         <argument name="posts_view_model" xsi:type="object">Tigren\Testimonial\ViewModel\Posts</argument>
                 </arguments>
                 <block class="Magento\Theme\Block\Html\Pager" name="blog_pager"/>
-                <block template="Tigren_Testimonial::post.phtml" as="post">
-                    <arguments>
-                        <argument name="post_view_model" xsi:type="object">Tigren\Testimonial\ViewModel\PostViewModel</argument>
-                    </arguments>
-                </block>
             </block>
         </referenceBlock>
     </body>

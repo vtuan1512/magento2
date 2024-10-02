@@ -1,4 +1,10 @@
 <?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ *
+ */
 
 namespace Tigren\Faq\Controller\Adminhtml\Post;
 
@@ -24,7 +30,6 @@ class Savepost extends \Magento\Backend\App\Action
       /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         $id=$this->getRequest()->getParam('question_id');
-        //echo $id; exit;
 	     try{
 	        /** @var \Magento\Cms\Model\Page $model */
 	           if(isset($id) && !empty($id)){

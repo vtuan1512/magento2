@@ -1,0 +1,40 @@
+<?php
+
+/** @var $block Template */
+
+use Magento\Framework\View\Element\Template;
+
+//$customerId = $block->getCustomerId();
+//var_dump($customerId);die;
+$postsViewModel = $block->getData('posts_view_model');
+$collection = $postsViewModel->getPosts();
+$ruleId = 1;
+?>
+<?php if (!$collection->count()): ?>
+    <p>There are no rules.</p>
+<?php else: ?>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product_Id</th>
+            <th>Customer_id</th>
+            <th>Order_id</th>
+            <th>Rule_id</th>
+            <th>Create At</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($collection as $rule): ?>
+            <tr>
+                <td><?= $ruleId++; ?></td>
+                <td><?= $rule->getData('product_id'); ?></td>
+                <td><?= $rule->getData('customer_id'); ?></td>
+                <td><?= $rule->getData('order_id'); ?></td>
+                <td><?= $rule->getData('rule_id'); ?></td>
+                <td><?= $rule->getData('created_at'); ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>

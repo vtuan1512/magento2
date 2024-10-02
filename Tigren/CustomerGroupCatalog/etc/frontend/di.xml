@@ -3,5 +3,4 @@
     <type name="Magento\Catalog\Model\Product">
         <plugin name="change_product" type="Tigren\CustomerGroupCatalog\Plugin\Product" sortOrder="1" disabled="true"/>
     </type>
-
 </config>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+  ~ @author    Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license   Open Software License ("OSL") v. 3.0
+  ~
+  -->
+
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <referenceContainer name="product.info.details.after.wrapper.main">
+        <block class="Magento\Framework\View\Element\Template" name="product.demotab.wrapper" before="product.attributes.wrapper" template="Magento_PageBuilder::catalog/product/view/section_wrapper.phtml">
+            <arguments>
+                <argument translate="true" name="title" xsi:type="string">Product FAQ</argument>
+                <argument name="section_id" xsi:type="string">demotab</argument>
+                <argument name="posts_view_model" xsi:type="object">Tigren\Faq\ViewModel\Posts</argument>
+            </arguments>
+            <block class="Magento\Catalog\Block\Product\View" name="demo.tab" template="Tigren_Faq::demo_tab.phtml">
+                <arguments>
+                    <argument name="posts_view_model" xsi:type="object">Tigren\Faq\ViewModel\Posts</argument>
+                </arguments>
+            </block>
+        </block>
+
+    </referenceContainer>
+</layout>

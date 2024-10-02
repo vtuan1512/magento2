@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+  ~ @author    Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license   Open Software License ("OSL") v. 3.0
+  ~
+  -->
+
+<page xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="left">
+            <block class="Tigren\ShippingRestrictions\Block\Adminhtml\Example\Rule\Edit\Tabs" name="example_rule_edit_tabs">
+                <block class="Tigren\ShippingRestrictions\Block\Adminhtml\Example\Rule\Edit\Tab\Main" name="example_rule_edit_tab_main"/>
+                <block class="Tigren\ShippingRestrictions\Block\Adminhtml\Example\Rule\Edit\Tab\Action" name="example_rule_edit_tab_action"/>
+                <block class="Tigren\ShippingRestrictions\Block\Adminhtml\Example\Rule\Edit\Tab\Conditions" name="example_rule_edit_tab_conditions"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">example_rule_edit_tab_main</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">conditions_section</argument>
+                    <argument name="block" xsi:type="string">example_rule_edit_tab_conditions</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">action_section</argument>
+                    <argument name="block" xsi:type="string">example_rule_edit_tab_action</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Tigren\ShippingRestrictions\Block\Adminhtml\Example\Rule\Edit" name="example_rule_edit"/>
+        </referenceContainer>
+    </body>
+</page>

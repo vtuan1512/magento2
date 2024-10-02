@@ -1,0 +1,51 @@
+<form action="<?= $block->getUrl('testimonial/index/save') ?>" method="POST" enctype="multipart/form-data">
+    <label for="name">Name</label>
+    <input type="text" name="name">
+
+    <label for="email">Email</label>
+    <input type="email" name="email">
+
+    <label class="image" for="">Profile Image</label>
+    <div class="profile-container">
+
+        <label for="profile_image" class="custom-file-upload">
+            <img id="previewImage" src="https://via.placeholder.com/70" alt="Profile Image"/>
+        </label>
+        <input type="file" id="profile_image" name="profile_image" accept="image/*" style="display:none"
+               onchange="previewFile()">
+    </div>
+
+    <label for="rating">Rating</label>
+    <select name="rating" id="">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <label for="message">Message</label>
+    <textarea name="message" cols="20" rows="5"></textarea>
+
+    <label for="company">Company</label>
+    <input type="text" name="company">
+
+    <br><br>
+    <button>Send</button>
+</form>
+<script>
+    function previewFile() {
+        const file = document.getElementById('profile_image').files[0];
+        const preview = document.getElementById('previewImage');
+        const reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file); // Chuyển file thành chuỗi base64
+        } else {
+            preview.src = "https://via.placeholder.com/150"; // Hình ảnh mặc định nếu không có ảnh
+        }
+    }
+</script>

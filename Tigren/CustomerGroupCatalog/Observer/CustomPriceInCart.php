@@ -1,4 +1,11 @@
 <?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ *
+ */
+
 namespace Tigren\CustomerGroupCatalog\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
@@ -54,6 +61,6 @@ class CustomPriceInCart implements ObserverInterface
     protected function calculateDiscount($ruleData, $price)
     {
         $discountPercentage = isset($ruleData['discount_amount']) ? $ruleData['discount_amount'] : 0;
-        return ($price * $discountPercentage) / 100; // Calculate discount as percentage of original price
+        return ($price * $discountPercentage) / 100;
     }
 }

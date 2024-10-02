@@ -12,7 +12,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
         $installer->startSetup();
 
-        if(version_compare($context->getVersion(), '1.1.3', '<')) {
+        if(version_compare($context->getVersion(), '1.1.5', '<')) {
             if (!$installer->tableExists('tigren_rule')) {
                 $table = $installer->getConnection()->newTable(
                     $installer->getTable('tigren_rule')
@@ -118,9 +118,9 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
                 );
             }
-            if (!$installer->tableExists('tigren_product_rule')) {
+            if (!$installer->tableExists('tigren_history')) {
                 $table = $installer->getConnection()->newTable(
-                    $installer->getTable('tigren_product_rule')
+                    $installer->getTable('tigren_history')
                 )
                     ->addColumn(
                         'value_id',
@@ -130,18 +130,25 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         'Value ID'
                     )
                     ->addColumn(
-                        'product_id',
+                        'entity_id',
                         \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
                         null,
-                        ['nullable' => false, 'unsigned' => true],
-                        'Product ID'
+                        ['nullable' => false,'unsigned' => true],
+                        'Entity ID'
                     )
                     ->addColumn(
-                        'group_id',
+                        'order_id',
                         \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
                         null,
                         ['nullable' => false, 'unsigned' => true],
-                        'Customer Group ID'
+                        'Order ID'
+                    )
+                    ->addColumn(
+                        'customer_id',
+                        \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+                        null,
+                        ['nullable' => false, 'unsigned' => true],
+                        'Customer ID'
                     )
                     ->addColumn(
                         'rule_id',
@@ -150,28 +157,35 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         ['nullable' => false, 'unsigned' => true],
                         'Rule ID'
                     )
-                    ->addForeignKey(
-                        $installer->getFkName('tigren_product_rule', 'product_id', 'catalog_product_entity', 'entity_id'),
-                        'product_id',
-                        $installer->getTable('catalog_product_entity'),
-                        'entity_id',
-                        \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
-                    )
-                    ->addForeignKey(
-                        $installer->getFkName('tigren_product_rule', 'group_id', 'customer_group', 'customer_group_id'),
-                        'group_id',
-                        $installer->getTable('customer_group'),
-                        'customer_group_id',
-                        \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
-                    )
-                    ->addForeignKey(
-                        $installer->getFkName('tigren_product_rule', 'rule_id', 'tigren_rule', 'rule_id'),
-                        'rule_id',
-                        $installer->getTable('tigren_rule'),
-                        'rule_id',
-                        \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
-                    )
-                    ->setComment('Tigren Product Rule Table');
+//                    ->addForeignKey(
+//                        $installer->getFkName('tigren_history', 'entity_id', 'catalog_product_entity', 'entity_id'),
+//                        'entity_id',
+//                        $installer->getTable('catalog_product_entity'),
+//                        'entity_id',
+//                        \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
+//                    )
+//                    ->addForeignKey(
+//                        $installer->getFkName('tigren_history', 'order_id', 'sales_order', 'entity_id'),
+//                        'order_id',
+//                        $installer->getTable('sales_order'),
+//                        'entity_id',
+//                        \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
+//                    )
+//                    ->addForeignKey(
+//                        $installer->getFkName('tigren_history', 'customer_id', 'customer_entity', 'entity_id'),
+//                        'customer_id',
+//                        $installer->getTable('customer_entity'),
+//                        'entity_id',
+//                        \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
+//                    )
+//                    ->addForeignKey(
+//                        $installer->getFkName('tigren_history', 'rule_id', 'tigren_rule', 'rule_id'),
+//                        'rule_id',
+//                        $installer->getTable('tigren_rule'),
+//                        'rule_id',
+//                        \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
+//                    )
+                    ->setComment('Customer Group Catalog History Table');
 
                 $installer->getConnection()->createTable($table);
             }

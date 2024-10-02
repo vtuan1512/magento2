@@ -20,7 +20,8 @@ class Savepost extends \Magento\Backend\App\Action
 
 	public function execute()
 	{
-		$data = $this->getRequest()->getPostValue();
+        global $model;
+        $data = $this->getRequest()->getPostValue();
       /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         $id=$this->getRequest()->getParam('rule_id');
@@ -29,11 +30,16 @@ class Savepost extends \Magento\Backend\App\Action
 	           if(isset($id) && !empty($id)){
                    unset($data['rule_id']);
 	           	   $model = $this->postFactory->create()->load($id);
-				   $model->addData($data);
-				   $model->save();
+//                   $productIds = isset($data['products']) ? $data['products'] : [];
+//                   $model->setData('products', implode(',', $productIds));
+
+                   $model->addData($data);
+                   $model->save();
 	           }else{
                    unset($data['rule_id']);
                    $model = $this->postFactory->create();
+//                   $productIds = isset($data['products']) ? $data['products'] : [];
+//                   $model->setData('products', implode(',', $productIds));
 				   $model->setData($data);
 				   $model->save();
 			   }
@@ -43,6 +49,7 @@ class Savepost extends \Magento\Backend\App\Action
 			}
 	 return $resultRedirect->setPath('*/*/');
 	}
+
 
 
 }

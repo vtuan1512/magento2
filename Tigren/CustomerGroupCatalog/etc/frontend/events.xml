@@ -6,4 +6,7 @@
     <event name="checkout_cart_product_add_after">
         <observer name="customPriceInCart" instance="Tigren\CustomerGroupCatalog\Observer\CustomPriceInCart" />
     </event>
+    <event name="catalog_product_collection_load_after">
+        <observer name="product_collection" instance="Tigren\CustomerGroupCatalog\Observer\Product"/>
+    </event>
 </config>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument name="title" translate="true" xsi:type="string">History</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="content">
+            <block class="Tigren\CustomerGroupCatalog\Block\CustomerID" template="Tigren_CustomerGroupCatalog::posts.phtml" as="posts">
+                <arguments>
+                    <argument name="posts_view_model" xsi:type="object">Tigren\CustomerGroupCatalog\ViewModel\Posts</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

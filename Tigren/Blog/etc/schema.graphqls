@@ -1,0 +1,24 @@
+type Query {
+    blogDetails(
+        blog_id: Int @doc(description: "Search Docs List.")
+    ): BlogDetails @resolver(class: "Tigren\\Blog\\Model\\Resolver\\BlogDetails") @doc(description: "Return details about a Blog Details.")
+
+    allBlogDetails: [AllBlog] @resolver(class: "Tigren\\Blog\\Model\\Resolver\\AllBlogDetails") @doc(description: "Return all Blog Details.")
+}
+type AllBlog {
+    post_id: Int @doc(description: "The ID of a Post page.")
+    title: String @doc(description: "The Post name.")
+    post_image: String @doc(description: "Url Key.")
+    full_content: String @doc(description: "Post Content")
+    cate_id: Int @doc(description: "The category id of post")
+    short_content: String @doc(description: "Short Content")
+    author: String @doc(description: "Author")
+    status: Int @doc(description: "Blog Status")
+}
+type BlogDetails {
+    post_id: Int @doc(description: "The ID of a Post page.")
+    title: String @doc(description: "The Post name.")
+    post_image: String @doc(description: "Url Key.")
+    full_content: String @doc(description: "Post Content")
+    status: Int @doc(description: "Blog Status")
+}

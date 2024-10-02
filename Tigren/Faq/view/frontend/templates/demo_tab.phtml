@@ -1,0 +1,75 @@
+<?php
+
+/** @var $block Template */
+
+use Magento\Framework\View\Element\Template;
+
+$product = $block->getProduct();
+$productId = $product->getId();
+
+$postsViewModel = $block->getData('posts_view_model');
+
+$collection = $postsViewModel->getPosts($productId);
+
+?>
+<?php if (!$collection->count()): ?>
+    <p>There are no questions.</p>
+<?php else: ?>
+    <div class="faq-list">
+        <?php $index = 1; ?>
+        <?php foreach ($collection as $rule): ?>
+            <div class="faq-item">
+                <h3 style="color: #990055"><?= $index . '. ' . $rule->getData('question'); ?></h3> <!-- Sử dụng biến đếm -->
+                <p><strong>Author:</strong> <?= $rule->getData('author'); ?></p>
+                <p><strong>Answer:</strong> <?= $rule->getData('answer'); ?></p>
+            </div>
+            <?php $index++;?>
+        <?php endforeach; ?>
+        <button id="modal-btn">Send your question</button>
+    </div>
+
+<?php endif; ?>
+<div id="modal-content">
+    <div class="modal-inner-content">
+        <form id="question-form" action="<?= $block->getFormAction() ?>" method="post">
+            <div class="form-group">
+                <label for="question">Enter your question:</label>
+                <textarea id="question" name="question" rows="4" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">Enter your name:</label>
+                <textarea id="name" name="name" rows="1" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function($, modal) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Send your question',
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    class: 'modal-close',
+                    click: function (){
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            modal(options, $('#modal-content'));
+            $("#modal-btn").on('click',function(){
+                $("#modal-content").modal("openModal");
+            });
+        }
+
+    );
+</script>

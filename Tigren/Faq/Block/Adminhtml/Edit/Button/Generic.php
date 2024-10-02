@@ -19,4 +19,5 @@ class Generic
     {
         return $this->context->getUrlBuilder()->getUrl($route, $params);
     }
+
 }

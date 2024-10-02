@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+  ~ @author    Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license   Open Software License ("OSL") v. 3.0
+  ~
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tigren_ShippingRestrictions::tigrenshippingrestrictions" title="Tigren Shipping" module="Tigren_ShippingRestrictions" sortOrder="51" resource="Tigren_ShippingRestrictions::tigrenshippingrestrictions"/>
+        <add id="Tigren_ShippingRestrictions::example_rule" title="Tigren Rules" module="Tigren_ShippingRestrictions" sortOrder="10" action="tigrenshippingrestrictions/example_rule" resource="Tigren_ShippingRestrictions::example_rule" parent="Tigren_ShippingRestrictions::tigrenshippingrestrictions"/>
+    </menu>
+</config>

@@ -100,13 +100,26 @@
                 </item>
             </argument>
         </field>
+<!--        <field name="product">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="dataType" xsi:type="string">text</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">Product</item>-->
+<!--                    <item name="formElement" xsi:type="string">input</item>-->
+<!--                    <item name="source" xsi:type="string">tigrenfaq_form</item>-->
+<!--                    <item name="dataScope" xsi:type="string">product</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </field>-->
         <field name="product">
             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Tigren\Faq\Model\Config\Source\Product</item>
                 <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Product</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">tigrenfaq_form</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/select</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
                     <item name="dataScope" xsi:type="string">product</item>
                 </item>
             </argument>
