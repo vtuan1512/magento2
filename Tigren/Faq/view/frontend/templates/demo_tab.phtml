@@ -31,7 +31,7 @@ $collection = $postsViewModel->getPosts($productId);
 <?php endif; ?>
 <div id="modal-content">
     <div class="modal-inner-content">
-        <form id="question-form" action="<?= $block->getFormAction() ?>" method="post">
+        <form id="question-form" action="<?= $block->getUrl('tigrenfaq/index/savepost') ?>" method="post">
             <div class="form-group">
                 <label for="question">Enter your question:</label>
                 <textarea id="question" name="question" rows="4" class="form-control" required></textarea>
@@ -40,10 +40,13 @@ $collection = $postsViewModel->getPosts($productId);
                 <label for="name">Enter your name:</label>
                 <textarea id="name" name="name" rows="1" class="form-control" required></textarea>
             </div>
+            <input type="hidden" name="product" id="name" value="<?php echo $productId?>">
+            <input type="hidden" name="form_key" value="<?= $block->getFormKey() ?>" />
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </div>
+
 <script>
     require(
         [
@@ -55,21 +58,39 @@ $collection = $postsViewModel->getPosts($productId);
                 type: 'popup',
                 responsive: true,
                 innerScroll: true,
-                title: 'Send your question',
-                buttons: [{
-                    text: $.mage.__('Close'),
-                    class: 'modal-close',
-                    click: function (){
-                        this.closeModal();
-                    }
-                }]
+                title: 'Product Question',
+                closeText: 'Close'
             };
-
-            modal(options, $('#modal-content'));
-            $("#modal-btn").on('click',function(){
+            var popup = modal(options, $('#modal-content'));
+            $("#modal-btn").on('click', function () {
                 $("#modal-content").modal("openModal");
             });
-        }
 
+            $("#question-form").on('submit', function(event) {
+                event.preventDefault();
+
+                var formData = $(this).serialize();
+
+                jQuery.ajax({
+                    url: "<?php echo $block->getUrl('tigrenfaq/index/savepost/'); ?>",
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            alert(response.message);
+                            $("#modal-content").modal("closeModal");
+                            $("#question-form")[0].reset();
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function() {
+                        alert('An error occurred while submitting your question.');
+                    }
+                });
+            });
+        }
     );
 </script>
+

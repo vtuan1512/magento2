@@ -26,7 +26,7 @@ $post = $postView->getPost();
          loading="lazy" />
 <?php endif; ?>
 <div>
-    <span class="full_content"><?= $escaper->escapeHtml($post->getData('full_content')); ?></span>
+    <span class="full_content"><?= $post->getData('full_content'); ?></span>
 </div>
 
 <div>

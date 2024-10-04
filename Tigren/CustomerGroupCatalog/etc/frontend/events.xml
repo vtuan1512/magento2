@@ -3,10 +3,10 @@
     <event name="layout_load_before">
         <observer name="add_layout_handles" instance="Tigren\CustomerGroupCatalog\Observer\Logouthandles" />
     </event>
-    <event name="checkout_cart_product_add_after">
-        <observer name="customPriceInCart" instance="Tigren\CustomerGroupCatalog\Observer\CustomPriceInCart" />
-    </event>
-    <event name="catalog_product_collection_load_after">
-        <observer name="product_collection" instance="Tigren\CustomerGroupCatalog\Observer\Product"/>
-    </event>
+<!--    <event name="checkout_cart_product_add_after">-->
+<!--        <observer name="customPriceInCart" instance="Tigren\CustomerGroupCatalog\Observer\CustomPriceInCart" />-->
+<!--    </event>-->
+<!--    <event name="catalog_product_collection_load_after">-->
+<!--        <observer name="product_collection" instance="Tigren\CustomerGroupCatalog\Observer\Product"/>-->
+<!--    </event>-->
 </config>

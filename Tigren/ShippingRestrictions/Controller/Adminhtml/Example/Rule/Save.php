@@ -50,6 +50,7 @@ class Save extends \Tigren\ShippingRestrictions\Controller\Adminhtml\Example\Rul
                 ['request' => $this->getRequest()]
             );
             $data = $this->getRequest()->getPostValue();
+//            var_dump($data);die;
             $data['from_date'] = $this->dateFilter->filter($data['from_date']);
             $data['to_date'] = $this->dateFilter->filter($data['to_date']);
             $data['customer_group'] = implode(',', $data['customer_group']);

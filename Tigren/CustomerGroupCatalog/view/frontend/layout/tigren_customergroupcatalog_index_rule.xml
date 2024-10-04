@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+  ~ @author    Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license   Open Software License ("OSL") v. 3.0
+  ~
+  -->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument name="title" translate="true" xsi:type="string">All Rule</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="content">
+            <block template="Tigren_CustomerGroupCatalog::rules.phtml" as="rules">
+                <arguments>
+                    <argument name="rules_view_model" xsi:type="object">Tigren\CustomerGroupCatalog\ViewModel\Rules</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

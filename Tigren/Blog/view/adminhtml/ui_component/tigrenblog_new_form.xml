@@ -106,17 +106,6 @@
 <!--            </argument>-->
 <!--        </field>-->
 
-        <field name="full_content">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Full Content</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">tigrenblog_form</item>
-                    <item name="dataScope" xsi:type="string">full_content</item>
-                </item>
-            </argument>
-        </field>
         <field name="short_content">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -183,4 +172,28 @@
         </field>
 
     </fieldset>
+    <fieldset name="full_content">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Full Content</label>
+        </settings>
+
+        <field name="full_content">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                    </item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Full Content</item>
+                    <item name="source" xsi:type="string">tigrenblog_form</item>
+                    <item name="dataScope" xsi:type="string">full_content</item>
+                </item>
+            </argument>
+        </field>
+
+    </fieldset>
+
 </form>

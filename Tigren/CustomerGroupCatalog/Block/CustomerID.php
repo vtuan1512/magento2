@@ -9,7 +9,10 @@
 namespace Tigren\CustomerGroupCatalog\Block;
 
 use Magento\Framework\View\Element\Template;
-use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Customer\Model\SessionFactory;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Sales\Api\OrderRepositoryInterface;
 
 /**
  *
@@ -17,41 +20,75 @@ use Magento\Customer\Model\Session as CustomerSession;
 class CustomerID extends Template
 {
     /**
-     * @var CustomerSession
+     * @var SessionFactory
      */
-    protected CustomerSession $customerSession;
+    protected SessionFactory $customerSessionFactory;
+
+    /**
+     * @var ProductRepositoryInterface
+     */
+    protected ProductRepositoryInterface $productRepository;
+
+    /**
+     * @var CustomerRepositoryInterface
+     */
+    protected CustomerRepositoryInterface $customerRepository;
+
+    /**
+     * @var OrderRepositoryInterface
+     */
+    protected OrderRepositoryInterface $orderRepository;
 
     /**
      * @param Template\Context $context
-     * @param CustomerSession $customerSession
+     * @param SessionFactory $customerSessionFactory
+     * @param ProductRepositoryInterface $productRepository
+     * @param CustomerRepositoryInterface $customerRepository
+     * @param OrderRepositoryInterface $orderRepository
      * @param array $data
      */
     public function __construct(
         Template\Context $context,
-        CustomerSession $customerSession,
+        SessionFactory $customerSessionFactory,
+        ProductRepositoryInterface $productRepository,
+        CustomerRepositoryInterface $customerRepository,
+        OrderRepositoryInterface $orderRepository,
         array $data = []
     ) {
-        $this->customerSession = $customerSession;
+        $this->customerSessionFactory = $customerSessionFactory;
+        $this->productRepository = $productRepository;
+        $this->customerRepository = $customerRepository;
+        $this->orderRepository = $orderRepository;
         parent::__construct($context, $data);
     }
 
     /**
-     * @return int
+     * @return int|string
      */
     public function getCustomerId()
     {
-        $isLoggedIn = $this->customerSession->isLoggedIn();
-        $customerId = $this->customerSession->getCustomerId();
+        $customerSession = $this->customerSessionFactory->create();
+        $customerId = $customerSession->getCustomerId();
 
-        // In ra thông tin debug
-        error_log("Is Logged In: " . ($isLoggedIn ? "Yes" : "No"));
-        error_log("Customer ID: " . $customerId);
-
-        if ($isLoggedIn) {
+        if ($customerId) {
             return $customerId;
         } else {
-            return "Khách hàng chưa đăng nhập.";
+            return "không tìm thấy ID khách hàng";
         }
     }
 
+    public function getProductRepository()
+    {
+        return $this->productRepository;
+    }
+
+    public function getCustomerRepository()
+    {
+        return $this->customerRepository;
+    }
+
+    public function getOrderRepository()
+    {
+        return $this->orderRepository;
+    }
 }

@@ -23,5 +23,7 @@
             <argument name="resourceModel" xsi:type="string">Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule</argument>
         </arguments>
     </virtualType>
-
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="customer_group_catalog_product_price" type="Tigren\CustomerGroupCatalog\Plugin\ProductPricePlugin" />
+    </type>
 </config>

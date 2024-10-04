@@ -16,9 +16,9 @@ class Posts implements ArgumentInterface
 
     ) {}
 
-    public function getPosts(): Collection
+    public function getPosts($customerId): Collection
     {
-        return $this->postsProvider->getPosts();
+        return $this->postsProvider->getPosts($customerId);
     }
 
 

@@ -1,0 +1,72 @@
+<?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ *
+ */
+
+/** @var Escaper $escaper */
+/** @var $block Template */
+/** @var $rulesViewModel Rules */
+use Magento\Framework\View\Element\Template;
+use Tigren\CustomerGroupCatalog\ViewModel\Rules;
+use Magento\Framework\Escaper;
+
+$rulesViewModel = $block->getData('rules_view_model');
+$collection = $rulesViewModel->getPosts();
+
+$currentTime = time(); // Lấy thời gian hiện tại
+?>
+<?php if (!$collection->count()): ?>
+    <p>No rules available.</p>
+<?php else: ?>
+    <table class="rules-table table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Customer Group</th>
+            <th>Store</th>
+            <th>Products</th>
+            <th>Discount Amount</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Button</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($collection as $rule): ?>
+            <?php
+            $endTime = strtotime($rule->getData('end_time'));
+            if ($endTime >= $currentTime):
+                ?>
+                <tr>
+                    <td><?= $escaper->escapeHtml($rule->getData('rule_id')); ?></td>
+                    <td><?= $escaper->escapeHtml($rule->getData('name')); ?></td>
+                    <td><?= $escaper->escapeHtml($rule->getData('customer_group')); ?></td>
+                    <td><?= $escaper->escapeHtml($rule->getData('store')); ?></td>
+                    <td><?= $escaper->escapeHtml($rule->getData('products')); ?></td>
+                    <td><?= $escaper->escapeHtml($rule->getData('discount_amount')); ?>%</td>
+                    <td><?= $escaper->escapeHtml($rule->getData('start_time')); ?></td>
+                    <td><?= $escaper->escapeHtml($rule->getData('end_time')); ?></td>
+                    <td>
+                        <div data-mage-init='{"tigrenButton/widget-example":{}}'>
+                            <input type="color" value="#000000" style="margin-bottom: 5px;">
+                            <div data-role="content" style="display: none;">
+                                <p><?= __('This is the content that will be shown or hidden.') ?></p>
+                            </div>
+                            <button data-role="showContent">
+                                <?= __('Show') ?>
+                            </button>
+                            <button data-role="hideContent">
+                                <?= __('Hide') ?>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>
