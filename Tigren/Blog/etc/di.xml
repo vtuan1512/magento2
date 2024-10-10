@@ -31,5 +31,6 @@
             <argument name="resourceModel" xsi:type="string">Tigren\Blog\Model\ResourceModel\Category</argument>
         </arguments>
     </virtualType>
+    <preference for="Tigren\Blog\Api\CustomInterface" type="Tigren\Blog\Model\Api\Custom"/>
 </config>
 

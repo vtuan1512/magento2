@@ -4,7 +4,23 @@ type Query {
     ): BlogDetails @resolver(class: "Tigren\\Blog\\Model\\Resolver\\BlogDetails") @doc(description: "Return details about a Blog Details.")
 
     allBlogDetails: [AllBlog] @resolver(class: "Tigren\\Blog\\Model\\Resolver\\AllBlogDetails") @doc(description: "Return all Blog Details.")
+
+    paginatedBlogDetails(
+            pageSize: Int = 5,
+            currentPage: Int = 1
+        ): PaginatedBlogResponse @resolver(class: "Tigren\\Blog\\Model\\Resolver\\PaginatedBlogDetails") @doc(description: "Return paginated Blog Details.")
 }
+
+type PaginatedBlogResponse {
+    items: [AllBlog] @doc(description: "List of paginated blog details.")
+    page_info: PageInfo @doc(description: "Information about the current page.")
+}
+
+type PageInfo {
+    current_page: Int @doc(description: "Current page number.")
+    total_pages: Int @doc(description: "Total number of pages available.")
+}
+
 type AllBlog {
     post_id: Int @doc(description: "The ID of a Post page.")
     title: String @doc(description: "The Post name.")
