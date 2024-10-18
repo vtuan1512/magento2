@@ -1,0 +1,12 @@
+type Query {
+    faqDetails(
+        product_id: Int @doc(description: "Search FAQ List by Product ID.")
+    ): [FAQDetails] @resolver(class: "Tigren\\Faq\\Model\\Resolver\\Faq") @doc(description: "Return details about FAQs related to a specific product.")
+}
+
+type FAQDetails {
+    question: String @doc(description: "The question asked in the FAQ.")
+    author: String @doc(description: "The author of the FAQ.")
+    answer: String @doc(description: "The answer to the question.")
+    creation_time: String @doc(description: "The creation time of the FAQ.")
+}

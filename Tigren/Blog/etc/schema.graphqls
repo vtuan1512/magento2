@@ -36,5 +36,7 @@ type BlogDetails {
     title: String @doc(description: "The Post name.")
     post_image: String @doc(description: "Url Key.")
     full_content: String @doc(description: "Post Content")
+    published_at:String
+    author: String @doc(description: "Author")
     status: Int @doc(description: "Blog Status")
 }
